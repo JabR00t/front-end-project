@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LifeOS – Bienvenue</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#f2f6fb;--mute:#b9c4d4;--pri:#2f7d6b;--pri-hi:#4fb59d;
+--c-spi:#3fb68f;--c-loi:#8b7cf0;--c-pro:#f2a25c;--c-san:#5b8def;--c-gro:#6bc48a;
+box-sizing:border-box}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:#0c1424;color:var(--ink);font:15px/1.5 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+.splash{position:relative;min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(32px + env(safe-area-inset-top,0px)) 20px calc(32px + env(safe-area-inset-bottom,0px));
+background:linear-gradient(180deg,#141d33 0%,#2a2a4a 38%,#6a4a58 62%,#c07a5c 78%,#2a2230 79%,#0c1424 100%);isolation:isolate}
+.splash::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse 60% 35% at 50% 72%,rgba(255,176,120,.38),transparent 70%)}
+.mtn{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:-1;display:block}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:clamp(34px,6vw,52px);letter-spacing:-.5px}
+.logo svg{width:1.05em;height:1.05em;color:#e8f6ef}
+.tag{margin:10px 0 0;color:var(--mute);font-size:clamp(14px,2vw,17px);font-weight:500}
+.pillars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;width:100%;max-width:760px;margin:38px 0 34px;padding:0;list-style:none}
+.pillars a{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 8px 16px;border-radius:14px;color:var(--ink);text-decoration:none;font-weight:600;font-size:13px;
+background:color-mix(in srgb,var(--c) 16%,rgba(14,22,38,.55));border:1px solid color-mix(in srgb,var(--c) 55%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .2s,border-color .2s}
+.pillars a:hover{transform:translateY(-3px);border-color:var(--c)}
+.pillars .ic{width:38px;height:38px;border-radius:50%;background:var(--c);display:grid;place-items:center;color:#0c1424}
+.pillars svg{width:20px;height:20px}
+.go{display:inline-block;padding:13px 44px;border-radius:99px;background:rgba(14,22,38,.55);border:1.5px solid rgba(255,255,255,.55);color:#fff;font:600 15px "Plus Jakarta Sans",system-ui,sans-serif;text-decoration:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s,border-color .2s}
+.go:hover{background:var(--pri);border-color:var(--pri-hi)}
+.foot{margin:22px 0 0;color:var(--mute);font-size:13px}
+a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.logo,.tag,.pillars,.go,.foot{animation:in .7s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.logo,.tag,.pillars,.go,.foot{animation:none}.pillars a{transition:none}}
+@media (max-width:640px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr));max-width:340px}.pillars li:last-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main class="splash">
+  <svg class="mtn" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 230L120 170 240 220 380 120 520 210 640 150 780 230 920 140 1060 215 1200 160 1320 215 1440 180V400H0z" fill="#4a3b4f" opacity=".75"/>
+    <path d="M0 290L140 230 280 280 430 200 580 285 720 235 880 295 1040 215 1190 285 1320 245 1440 280V400H0z" fill="#2b2338"/>
+    <path d="M0 345L160 305 320 340 500 290 680 345 860 305 1040 350 1220 310 1440 345V400H0z" fill="#161b2e"/>
+  </svg>
+
+  <div class="logo"><svg viewBox="0 0 70 60" fill="none"><path d="M35 58V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M35 34C22 34 16 24 18 12c13-1 20 8 17 22z" fill="#7cc79a"/><path d="M35 28c2-12 10-18 22-16 1 12-6 19-22 16z" fill="#4fa57a"/></svg>LifeOS</div>
+  <p class="tag">Une seule plateforme, tous tes objectifs</p>
+
+  <ul class="pillars">
+    <li><a href="#" style="--c:var(--c-spi)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 2 3 3 3 5H9c0-2 1-3 3-5zM6 21V12h12v9M3 21h18"/></svg></span>Spiritualité</a></li>
+    <li><a href="#" style="--c:var(--c-loi)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 012-2h6v16H5a2 2 0 00-2 2zM21 5a2 2 0 00-2-2h-6v16h6a2 2 0 012 2z"/></svg></span>Loisirs</a></li>
+    <li><a href="#" style="--c:var(--c-pro)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5"/></svg></span>Productivité</a></li>
+    <li><a href="#" style="--c:var(--c-san)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.7A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg></span>Santé</a></li>
+    <li><a href="#" style="--c:var(--c-gro)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11M12 13C8 13 6 10 6 6c4 0 6 3 6 7zM12 11c0-4 2-6 6-6 0 4-2 6-6 6z"/></svg></span>Évolution</a></li>
+  </ul>
+
+  <!-- Remplace href par le lien de ton tableau de bord -->
+  <a class="go" href="lifeos-personal-growth.html">Commencer</a>
+  <p class="foot">Ton bien-être, notre priorité</p>
+</main>
+</body>
+</html>

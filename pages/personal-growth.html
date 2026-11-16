@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LifeOS – Personal Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9eefa;--card:#fff;--ink:#1b2a3a;--mute:#7a8797;--line:#e7ecf3;--pri:#2f7d6b;--pri-soft:#e3f3ee;--blue:#5b8def;--blue-soft:#eaf1ff;--amber:#f2a25c;--track:#e8edf4;--side:#fbfcff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1622;--card:#182231;--ink:#e8eef6;--mute:#93a1b3;--line:#263346;--pri:#4fb59d;--pri-soft:#1b3a35;--blue:#7aa5ff;--blue-soft:#1d2b46;--track:#26344a;--side:#141d2b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1622;--card:#182231;--ink:#e8eef6;--mute:#93a1b3;--line:#263346;--pri:#4fb59d;--pri-soft:#1b3a35;--blue:#7aa5ff;--blue-soft:#1d2b46;--track:#26344a;--side:#141d2b;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.app{display:grid;grid-template-columns:210px 1fr;max-width:1180px;margin:20px auto;background:var(--card);border-radius:18px;overflow:hidden;min-height:720px;box-shadow:0 8px 30px rgba(40,60,110,.12)}
+aside{background:var(--side);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;margin:0 6px 26px}
+.logo svg{width:22px;height:22px;color:var(--pri)}
+nav{display:flex;flex-direction:column;gap:4px;flex:1}
+nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--mute);text-decoration:none;font-size:13px;font-weight:500}
+nav a svg{width:16px;height:16px;flex:none}
+nav a.on{background:var(--pri-soft);color:var(--pri);font-weight:600}
+.foot{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:12px;padding:6px 10px}
+.foot svg{width:15px;height:15px}
+main{padding:26px 28px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
+h1{margin:0;font-size:22px;font-weight:700}
+.sub{color:var(--mute);margin:4px 0 0;font-size:13px}
+.sprout{width:70px;height:60px;flex:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat{display:flex;align-items:center;gap:14px}
+.stat .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none}
+.stat .ic svg{width:22px;height:22px}
+.stat small{display:block;color:var(--mute);font-size:12px;font-weight:600;margin-bottom:2px}
+.stat b{font-size:24px;font-weight:700}
+.stat em{font-style:normal;color:var(--mute);font-size:11px;margin-left:6px}
+.g1{background:var(--pri-soft);color:var(--pri)}.g2{background:var(--blue-soft);color:var(--blue)}.g3{background:#e6f5ee;color:#3a9a6e}
+.grid{display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+h2{margin:0 0 12px;font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+h2 button{border:0;background:none;color:var(--pri);font:600 12px inherit;font-family:inherit;cursor:pointer}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{border:0;border-radius:99px;padding:5px 13px;font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;background:none;color:var(--mute);cursor:pointer}
+.tabs button.on{background:var(--pri-soft);color:var(--pri)}
+.goal{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.goal:first-of-type{border-top:0}
+.goal .gi{width:30px;height:30px;border-radius:9px;background:var(--pri-soft);color:var(--pri);display:grid;place-items:center;flex:none}
+.goal .gi svg{width:16px;height:16px}
+.goal .t{flex:1;min-width:0}
+.goal .t b{font-size:13px;font-weight:600;display:block}
+.goal .t span{font-size:11px;color:var(--mute)}
+.bar{height:5px;border-radius:9px;background:var(--track);margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:9px;transition:width .3s}
+.goal .p{font-size:12px;font-weight:600;color:var(--mute);align-self:center}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;color:var(--mute);font-weight:600;padding-bottom:8px}
+td{padding:5px 0;text-align:center}
+td.n{text-align:left;font-size:12.5px;font-weight:500;white-space:nowrap}
+td.n svg{width:14px;height:14px;vertical-align:-2px;margin-right:6px;color:var(--mute)}
+.dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);background:none;display:inline-grid;place-items:center;cursor:pointer;padding:0;color:#fff}
+.dot.on{background:var(--pri);border-color:var(--pri)}
+.dot svg{width:10px;height:10px;opacity:0}.dot.on svg{opacity:1}
+.dot:focus-visible,.tabs button:focus-visible,.btn:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+th.today{color:var(--pri)}
+.week{display:flex;gap:16px;align-items:stretch}
+.chart{flex:1.2;display:flex;align-items:flex-end;gap:9px;height:110px;padding-top:6px}
+.chart div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%;font-size:10px;color:var(--mute)}
+.chart i{width:100%;max-width:18px;border-radius:5px 5px 2px 2px;background:var(--blue)}
+.chart div:nth-child(odd) i{background:#8fb3f5}
+.note{flex:1;font-size:12px;color:var(--mute);display:flex;gap:8px;align-content:flex-start}
+.note svg{width:16px;height:16px;color:var(--amber);flex:none;margin-top:2px}
+.prog{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.ring{width:84px;height:84px;border-radius:50%;background:conic-gradient(var(--pri) 68%,var(--track) 0);display:grid;place-items:center}
+.ring span{width:66px;height:66px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:700;font-size:16px}
+.btn{border:0;background:var(--pri);color:#fff;border-radius:10px;padding:9px 20px;font:600 12.5px "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer}
+@media (max-width:900px){.app{grid-template-columns:1fr;margin:0;border-radius:0}aside{display:none}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>LifeOS</div>
+  <nav id="nav"></nav>
+  <div class="foot"><span style="display:flex;gap:8px;align-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Paramètres</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></div>
+</aside>
+<main>
+  <div class="head">
+    <div><h1>Personal Growth</h1><p class="sub">Prendre du recul sur tes objectifs et tes habitudes.</p></div>
+    <svg class="sprout" viewBox="0 0 70 60" fill="none"><path d="M35 58V30" stroke="#6bb58a" stroke-width="3" stroke-linecap="round"/><path d="M35 34C22 34 16 24 18 12c13-1 20 8 17 22z" fill="#7cc79a"/><path d="M35 28c2-12 10-18 22-16 1 12-6 19-22 16z" fill="#4fa57a"/><ellipse cx="35" cy="58" rx="18" ry="3" fill="#cfe7da"/></svg>
+  </div>
+
+  <div class="stats">
+    <div class="card stat"><div class="ic g1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></div><div><small>Objectifs</small><b id="sGoals">3/5</b><em>En cours</em></div></div>
+    <div class="card stat"><div class="ic g2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></div><div><small>Habitudes</small><b id="sHab">4/7</b><em>Aujourd’hui</em></div></div>
+    <div class="card stat"><div class="ic g3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 11-3-6.2M20 4v5h-5"/></svg></div><div><small>Bilan de la semaine</small><b>7/10</b><em>Très bien !</em></div></div>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="card">
+        <h2>Mes objectifs <button type="button">+ Ajouter</button></h2>
+        <div class="tabs" role="tablist"><button class="on" data-t="court" role="tab">Court terme</button><button data-t="long" role="tab">Long terme</button></div>
+        <div id="goals"></div>
+      </div>
+      <div class="card">
+        <h2>Bilan de la semaine</h2>
+        <div class="week">
+          <div class="chart" id="chart" role="img" aria-label="Score quotidien de la semaine"></div>
+          <div class="note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span>Cette semaine, tu as été plus régulier sur tes habitudes et tu as bien avancé sur tes objectifs ! Continue comme ça !</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h2>Suivi des habitudes</h2>
+        <table id="habits"></table>
+      </div>
+      <div class="card prog">
+        <h2 style="align-self:flex-start;width:100%">Mes progrès</h2>
+        <div class="ring"><span>68%</span></div>
+        <div style="font-size:12.5px;color:var(--mute)">Tu es sur la bonne voie !</div>
+        <button class="btn" type="button">Voir les détails</button>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+<script>
+var I={
+home:'<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',
+book:'<path d="M3 5a2 2 0 012-2h6v16H5a2 2 0 00-2 2zM21 5a2 2 0 00-2-2h-6v16h6a2 2 0 012 2z"/>',
+heart:'<path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.7A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/>',
+read:'<path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4z"/>',
+mosque:'<path d="M12 3c2 2 3 3 3 5H9c0-2 1-3 3-5zM6 21V12h12v9M3 21h18"/>',
+sprout:'<path d="M12 21V11M12 13C8 13 6 10 6 6c4 0 6 3 6 7zM12 11c0-4 2-6 6-6 0 4-2 6-6 6z"/>',
+run:'<circle cx="13" cy="4" r="2"/><path d="M5 22l4-8 3 3v5M9 14l3-5 4 3 3-1M12 9l-4 2"/>',
+drop:'<path d="M12 3s6 7 6 11a6 6 0 01-12 0c0-4 6-11 6-11z"/>',
+mind:'<circle cx="12" cy="12" r="9"/><path d="M8 14c1 2 7 2 8 0M9 9h.01M15 9h.01"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/>',
+moon:'<path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/>',
+cap:'<path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5"/>',
+code:'<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 4l-4 16"/>',
+plane:'<path d="M2 12l20-8-6 18-4-8z"/>',
+house:'<path d="M3 11l9-8 9 8v9H3z"/>',
+dollar:'<path d="M12 2v20M17 6H9.5a3 3 0 000 6h5a3 3 0 010 6H6"/>'};
+function ic(n){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+I[n]+'</svg>'}
+var nav=[['home','Accueil'],['book','Productivité & Études'],['heart','Santé & Bien-être'],['read','Lecture & Loisirs'],['mosque','Spiritualité'],['sprout','Développement personnel']];
+document.getElementById('nav').innerHTML=nav.map(function(n,i){return '<a href="#" class="'+(i==5?'on':'')+'">'+ic(n[0])+n[1]+'</a>'}).join('');
+
+var goals={
+court:[['cap','Réussir mes examens','Début : Oct 2025',60],['code','Développer mes compétences en dev','Début : Nov 2025',30],['plane','Voyager au Maroc','Début : 2026',10]],
+long:[['house','Devenir indépendant financièrement','Début : 2025',15],['dollar','Lancer mon premier projet','Début : 2026',5]]};
+function renderGoals(k){document.getElementById('goals').innerHTML=goals[k].map(function(g){return '<div class="goal"><div class="gi">'+ic(g[0])+'</div><div class="t"><b>'+g[1]+'</b><span>'+g[2]+'</span><div class="bar"><i style="width:'+g[3]+'%"></i></div></div><div class="p">'+g[3]+'%</div></div>'}).join('')}
+renderGoals('court');
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');renderGoals(b.dataset.t)}});
+
+var days=['L','M','M','J','V','S','D'],TODAY=2;
+var habits=[['book','Lire',[1,1,1,1,1,0,0]],['run','Sport',[1,0,1,1,0,0,0]],['mind','Méditation',[1,1,0,1,1,0,0]],['drop','Hydratation',[1,1,1,1,1,0,0]],['cap','Étude',[1,1,1,0,1,0,0]],['sun','Gratitude',[0,1,0,1,0,0,0]],['moon','Sommeil',[1,1,0,0,1,0,0]]];
+var chk='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg>';
+function renderHabits(){
+ var h='<tr><th></th>'+days.map(function(d,i){return '<th class="'+(i==TODAY?'today':'')+'">'+d+'</th>'}).join('')+'</tr>';
+ habits.forEach(function(r,ri){h+='<tr><td class="n">'+ic(r[0])+r[1]+'</td>'+r[2].map(function(v,di){return '<td><button type="button" class="dot'+(v?' on':'')+'" data-r="'+ri+'" data-d="'+di+'" aria-pressed="'+!!v+'" aria-label="'+r[1]+' '+days[di]+'">'+chk+'</button></td>'}).join('')+'</tr>'});
+ document.getElementById('habits').innerHTML=h;
+ document.getElementById('sHab').textContent=habits.filter(function(r){return r[2][TODAY]}).length+'/'+habits.length;
+}
+renderHabits();
+document.getElementById('habits').onclick=function(e){var b=e.target.closest('.dot');if(!b)return;var r=habits[b.dataset.r];r[2][b.dataset.d]=r[2][b.dataset.d]?0:1;renderHabits();var n=document.querySelector('.dot[data-r="'+b.dataset.r+'"][data-d="'+b.dataset.d+'"]');if(n)n.focus()};
+
+var w=[6,7,5,8,7,6,9],names=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+document.getElementById('chart').innerHTML=w.map(function(v,i){return '<div><i style="height:'+(v*9)+'%"></i>'+names[i]+'</div>'}).join('');
+</script>
+</body>
+</html>
