@@ -1,0 +1,36 @@
+/* Structure commune à toutes les pages : app, barre latérale, en-tête, cartes de stats, grille */
+.app{display:grid;grid-template-columns:220px 1fr;width:100%;max-width:none;margin:0;background:var(--card);min-height:100vh}
+aside{background:var(--side);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;position:sticky;top:0;align-self:start;height:100vh}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;margin:0 6px 26px}
+.logo svg{width:22px;height:22px;color:var(--pri)}
+nav{display:flex;flex-direction:column;gap:4px;flex:1}
+nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--mute);text-decoration:none;font-size:13px;font-weight:500}
+nav a svg{width:16px;height:16px;flex:none}
+nav a.on{background:var(--pri-soft);color:var(--pri);font-weight:600}
+.foot{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:12px;padding:6px 10px}
+.foot svg{width:15px;height:15px}
+main{padding:28px clamp(20px,3.2vw,56px);min-width:0}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
+h1{margin:0;font-size:22px;font-weight:700}
+.sub{color:var(--mute);margin:4px 0 0;font-size:13px}
+.sprout{width:70px;height:60px;flex:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat{display:flex;align-items:center;gap:14px}
+.stat .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none}
+.stat .ic svg{width:22px;height:22px}
+.stat small{display:block;color:var(--mute);font-size:12px;font-weight:600;margin-bottom:2px}
+.stat b{font-size:24px;font-weight:700}
+.stat em{font-style:normal;color:var(--mute);font-size:11px;margin-left:6px}
+.g1{background:var(--pri-soft);color:var(--pri)}.g2{background:var(--blue-soft);color:var(--blue)}.g3{background:#e6f5ee;color:#3a9a6e}
+.grid{display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+@media (max-width:900px){.app{grid-template-columns:1fr}aside{display:none}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+/* Bouton de thème (pied de la barre latérale) */
+#theme{border:0;background:none;color:var(--mute);width:30px;height:30px;border-radius:8px;display:grid;place-items:center;cursor:pointer;padding:0}
+#theme:hover{background:var(--pri-soft);color:var(--pri)}
+#theme:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+#theme svg{width:16px;height:16px}
+:root[data-theme="dark"] .g3{background:#1b3a2c;color:#5fc796}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .g3{background:#1b3a2c;color:#5fc796}}
+.foot .set{display:flex;gap:8px;align-items:center}
